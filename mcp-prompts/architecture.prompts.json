@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "collection": "architecture",
+  "prompts": [
+    {
+      "name": "architecture.system.design",
+      "description": "Design a scalable system architecture with clear boundaries and NFRs (availability, latency, cost).",
+      "arguments": [
+        { "name": "application_type", "description": "Type of system (e.g., SaaS, streaming, marketplace).", "required": true },
+        { "name": "requirements", "description": "Functional requirements and key user journeys.", "required": true },
+        { "name": "scale", "description": "Traffic, data volume, RPS/QPS, concurrency, growth.", "required": true },
+        { "name": "nfr", "description": "Non-functional requirements: availability, latency, durability, cost.", "required": true },
+        { "name": "constraints", "description": "Tech constraints: cloud, language, services, data residency.", "required": false },
+        { "name": "security", "description": "AuthN/Z, data sensitivity (PII/PCI/HIPAA), compliance.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Design an end-to-end architecture for a {{application_type}} that meets: {{requirements}}, at scale {{scale}}, with NFRs {{nfr}} and constraints {{constraints}}. Provide: component diagram description, service boundaries, data flows, storage choices with rationale, caching, async vs sync calls, failure modes and mitigations, cost notes. SECURITY: Call out trust boundaries, tenant isolation, secret handling, and least-privilege."
+          }
+        }
+      ]
+    },
+    {
+      "name": "architecture.api.rest",
+      "description": "Design a RESTful API following best practices, versioning, and consistency.",
+      "arguments": [
+        { "name": "domain", "description": "Domain and core resources.", "required": true },
+        { "name": "operations", "description": "CRUD and custom actions.", "required": true },
+        { "name": "versioning", "description": "Path vs header vs media-type versioning.", "required": false },
+        { "name": "auth", "description": "Auth scheme (OAuth2, JWT, mTLS) and scopes.", "required": false },
+        { "name": "pagination", "description": "Cursor/page strategy and limits.", "required": false },
+        { "name": "rate_limiting", "description": "Per-user/app/IP quotas.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Produce a REST API design for {{domain}} covering resources, URIs, methods, request/response schemas, errors, idempotency, pagination {{pagination}}, versioning {{versioning}}, and auth {{auth}}. Include rate limiting {{rate_limiting}} and examples. SECURITY: Context-aware output encoding, input allow-list validation, safe error messages."
+          }
+        }
+      ]
+    },
+    {
+      "name": "architecture.api.graphql",
+      "description": "Create a GraphQL schema with efficient query patterns and pagination.",
+      "arguments": [
+        { "name": "data_model", "description": "Entities, relationships, and fields.", "required": true },
+        { "name": "queries", "description": "High-value read patterns.", "required": true },
+        { "name": "mutations", "description": "Write patterns and constraints.", "required": false },
+        { "name": "pagination", "description": "Relay-style cursor pagination preferences.", "required": false },
+        { "name": "authz", "description": "Field-level authorization rules.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {"type": "text", "text": "Design a GraphQL schema for {{data_model}} with queries {{queries}} and mutations {{mutations}}. Use cursor pagination {{pagination}} and avoid N+1 with data loaders. SECURITY: Enforce field-level authorization {{authz}}, limit query depth/complexity, and implement safe error masks."}
+        }
+      ]
+    },
+    {
+      "name": "architecture.security.model",
+      "description": "Design a security architecture covering AuthN/Z, secrets, network, data protection.",
+      "arguments": [
+        { "name": "application", "description": "Application context and components.", "required": true },
+        { "name": "data_sensitivity", "description": "PII/PCI/HIPAA classification.", "required": true },
+        { "name": "compliance", "description": "Compliance needs (SOC2/GDPR/HIPAA/PCI).", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose a zero-trust security model for {{application}}. Cover: identity (AuthN/Z), key management, secret storage, network segmentation, encryption-at-rest and in-transit (TLS 1.3+), logging redaction, and incident response. SECURITY: Note side-channel risks, secure defaults, and data minimization based on {{data_sensitivity}} and {{compliance}}."}}
+      ]
+    },
+    {
+      "name": "architecture.performance.scalable",
+      "description": "Design for horizontal scalability and predictable performance under load.",
+      "arguments": [
+        { "name": "workload", "description": "Traffic patterns and peak/off-peak behavior.", "required": true },
+        { "name": "sla", "description": "Latency/error budgets and SLOs.", "required": true },
+        { "name": "cost", "description": "Cost constraints or targets.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Design a horizontally scalable architecture for {{workload}} to meet {{sla}} within {{cost}}. Include autoscaling signals, backpressure, caching (local, CDN), partitioning, and queueing. Address hotspots and noisy neighbor isolation."}}
+      ]
+    },
+    {
+      "name": "architecture.devops.cicd",
+      "description": "Design a CI/CD pipeline with quality gates and safe deployments.",
+      "arguments": [
+        { "name": "application", "description": "Repo layout, languages, build steps.", "required": true },
+        { "name": "environments", "description": "Envs (dev/stage/prod) and promotion flows.", "required": true },
+        { "name": "deployment", "description": "Strategy (blue/green, canary, rolling).", "required": false },
+        { "name": "tests", "description": "Unit/integration/e2e thresholds.", "required": false },
+        { "name": "security", "description": "SAST/DAST, SBOM, signing, provenance.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose CI/CD for {{application}} across {{environments}} with {{deployment}}. Include caching, parallelism, artifacts, quality gates, rollback, feature flags, and infra as code. SECURITY: supply-chain controls (SBOM, signature verification), secrets hygiene, policy-as-code."}}
+      ]
+    },
+    {
+      "name": "architecture.resilience.circuit_breaker",
+      "description": "Design circuit breaker and retry/backoff strategies for dependencies.",
+      "arguments": [
+        { "name": "dependencies", "description": "External/internal services and their SLAs.", "required": true },
+        { "name": "traffic", "description": "Call volumes and criticality.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Define circuit breaker thresholds, half-open probes, and retries with jitter/backoff for {{dependencies}} under {{traffic}}. Include idempotency guidance, hedged requests, and fallback behavior. SECURITY: ensure error messages are sanitized."}}
+      ]
+    },
+    {
+      "name": "architecture.ddd.bounded_contexts",
+      "description": "Define bounded contexts and their integration patterns.",
+      "arguments": [
+        { "name": "domain", "description": "Business domain and subdomains.", "required": true },
+        { "name": "capabilities", "description": "Key domain capabilities and ownership.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose bounded contexts for {{domain}} with clear ownership of {{capabilities}}. Describe context maps, anti-corruption layers, and integration (events vs sync)."}}
+      ]
+    },
+    {
+      "name": "architecture.config.secrets",
+      "description": "Design a secrets management strategy across environments.",
+      "arguments": [
+        { "name": "secrets_types", "description": "Types (API keys, DB creds, tokens).", "required": true },
+        { "name": "environments", "description": "Envs (dev/stage/prod) and rotation needs.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Define secret storage (HSM/KMS/Vault), rotation policy, access control, and audit logging for {{secrets_types}} across {{environments}}. SECURITY: prevent exposure in logs, enforce envelope encryption, zero-trust retrieval."}}
+      ]
+    },
+    {
+      "name": "architecture.testing.strategy",
+      "description": "Design a testing architecture across unit, integration, e2e, performance, chaos.",
+      "arguments": [
+        { "name": "system", "description": "System type and components.", "required": true },
+        { "name": "quality_goals", "description": "Targets for reliability, coverage, and MTBF.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose a test strategy for {{system}}: test pyramid, fixtures and envs, deterministic data, hermetic builds, contract tests, performance SLO checks, and chaos experiments aligned to {{quality_goals}}."}}
+      ]
+    }
+  ]
+}
+
+

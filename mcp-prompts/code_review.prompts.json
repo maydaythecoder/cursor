@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "collection": "code_review",
+  "prompts": [
+    {
+      "name": "code_review.quality",
+      "description": "Review for readability, maintainability, and best practices.",
+      "arguments": [
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "code", "description": "Code snippet/module to review.", "required": true },
+        { "name": "style", "description": "Style guide or linter rules.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Act as a senior {{language}} reviewer. Evaluate naming, cohesion, coupling, SRP, error handling, and clarity. Provide concrete edits and rationale. Follow style {{style}} if provided."}},
+        {"role": "user", "content": {"type": "text", "text": "Review this code:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.security",
+      "description": "Security-focused review with actionable fixes.",
+      "arguments": [
+        { "name": "code", "description": "Code under review.", "required": true },
+        { "name": "context", "description": "Runtime context and data sensitivity.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Identify vulnerabilities (injection, XSS, SSRF, authz bypass, insecure deserialization, timing leaks). SECURITY: Propose safe, context-aware fixes (parameterized queries, output encoding, CSRF protection, constant-time compares). Context: {{context}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Security review:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.refactor.extract_functions",
+      "description": "Refactor long/complex functions into smaller units.",
+      "arguments": [
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "code", "description": "The function(s) to refactor.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Refactor to smaller functions with clear names and single responsibilities. Keep behavior identical, add guard clauses, and improve testability. Provide a diff-style outline of edits."}},
+        {"role": "user", "content": {"type": "text", "text": "Refactor:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.architecture",
+      "description": "Module-level architecture review.",
+      "arguments": [
+        { "name": "code", "description": "Module/package to evaluate.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Assess separation of concerns, boundary design, dependency direction, and testability. Recommend restructuring with risks/tradeoffs."}},
+        {"role": "user", "content": {"type": "text", "text": "Architecture review:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.performance",
+      "description": "Performance review with optimization suggestions.",
+      "arguments": [
+        { "name": "code", "description": "Hot code path or algorithm.", "required": true },
+        { "name": "workload", "description": "Typical inputs and constraints.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Analyze complexity, memory, allocations, and I/O. Suggest algorithmic and micro-optimizations, with benchmark ideas. Workload: {{workload}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Performance review:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.maintainability",
+      "description": "Make code more maintainable and extensible.",
+      "arguments": [
+        { "name": "code", "description": "Code to improve.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Reduce cognitive load, remove duplication, improve naming and structure, and extract reusable components. Provide concrete refactor steps."}},
+        {"role": "user", "content": {"type": "text", "text": "Improve maintainability:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.tests",
+      "description": "Review and augment tests.",
+      "arguments": [
+        { "name": "tests", "description": "Existing tests.", "required": true },
+        { "name": "subject", "description": "Code under test.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Evaluate coverage, edge cases, failure modes, and flakiness. Suggest improvements and add missing cases with Arrange-Act-Assert clarity."}},
+        {"role": "user", "content": {"type": "text", "text": "Review tests for {{subject}}:\n{{tests}}"}}
+      ]
+    },
+    {
+      "name": "code_review.style",
+      "description": "Ensure consistent coding standards and idioms.",
+      "arguments": [
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "code", "description": "Code sample.", "required": true },
+        { "name": "style", "description": "Style guide.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Check idiomatic usage and style compliance. Provide corrected examples. Style: {{style}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Style review ({{language}}):\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.documentation",
+      "description": "Improve documentation and examples.",
+      "arguments": [
+        { "name": "code", "description": "Module/API to document.", "required": true },
+        { "name": "audience", "description": "Primary audience (users, contributors, SRE).", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Generate clear docstrings, README section, and usage examples for {{audience}}. Include constraints, edge cases, and limitations."}},
+        {"role": "user", "content": {"type": "text", "text": "Document:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.modernization",
+      "description": "Migrate legacy code to modern patterns and libraries.",
+      "arguments": [
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "code", "description": "Legacy code.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Replace deprecated APIs, update data structures, and adopt modern idioms. Provide a sequenced migration plan with risks and rollbacks."}},
+        {"role": "user", "content": {"type": "text", "text": "Modernize ({{language}}):\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "code_review.complexity",
+      "description": "Simplify complex logic while preserving behavior.",
+      "arguments": [
+        { "name": "code", "description": "Code to simplify.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Flatten nesting, extract predicates, and adopt guard clauses. Show before/after snippets and reasoning."}},
+        {"role": "user", "content": {"type": "text", "text": "Simplify:\n{{code}}"}}
+      ]
+    }
+  ]
+}
+
+

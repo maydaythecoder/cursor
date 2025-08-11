@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "collection": "learning",
+  "prompts": [
+    {
+      "name": "learning.code.explain",
+      "description": "Explain what code does with a step-by-step breakdown.",
+      "arguments": [
+        { "name": "code", "description": "Code to explain.", "required": true },
+        { "name": "example_input", "description": "Concrete input to walk through.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Explain the code's purpose, inputs/outputs, side effects, and algorithm steps. Provide a walkthrough using {{example_input}} if present."}},
+        {"role": "user", "content": {"type": "text", "text": "Explain:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.concept.explain",
+      "description": "Teach a programming concept with practical examples.",
+      "arguments": [
+        { "name": "concept", "description": "Concept to explain.", "required": true },
+        { "name": "language", "description": "Language for examples.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Define {{concept}}, explain tradeoffs, show idiomatic examples in {{language}}, and list common pitfalls with fixes."}}
+      ]
+    },
+    {
+      "name": "learning.code.analysis",
+      "description": "Identify inputs, outputs, dependencies, and assumptions in code.",
+      "arguments": [
+        { "name": "code", "description": "Code to analyze.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "List inputs/outputs, side effects, external dependencies, invariants, and assumptions. Note hidden coupling and recommend decoupling."}},
+        {"role": "user", "content": {"type": "text", "text": "Analyze:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.best_practices",
+      "description": "Summarize best practices for a specific task.",
+      "arguments": [
+        { "name": "task", "description": "Task or domain.", "required": true },
+        { "name": "language", "description": "Language/framework context.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Provide actionable best practices, anti-patterns to avoid, and code examples for {{task}} in {{language}}."}}
+      ]
+    },
+    {
+      "name": "learning.architecture.overview",
+      "description": "Explain a system/module architecture and data flow.",
+      "arguments": [
+        { "name": "code", "description": "System or module code/description.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Describe layers/components, their responsibilities, and interactions. Map data flow and lifecycle."}},
+        {"role": "user", "content": {"type": "text", "text": "Architecture:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.patterns.identify",
+      "description": "Identify design/architectural patterns present in code.",
+      "arguments": [
+        { "name": "code", "description": "Code to inspect.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Point out patterns used, how they are applied, and adherence to principles. Suggest improvements or alternatives."}},
+        {"role": "user", "content": {"type": "text", "text": "Identify patterns:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.comparative",
+      "description": "Compare two implementations with tradeoffs.",
+      "arguments": [
+        { "name": "impl_a", "description": "Implementation A.", "required": true },
+        { "name": "impl_b", "description": "Implementation B.", "required": true },
+        { "name": "criteria", "description": "Comparison criteria.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Compare {{impl_a}} vs {{impl_b}} across {{criteria}}: complexity, performance, memory, readability, testability, and extensibility. Provide a recommendation based on context."}}
+      ]
+    },
+    {
+      "name": "learning.practical.apply",
+      "description": "Show real-world use cases and extensions for code.",
+      "arguments": [
+        { "name": "code", "description": "Code to extend.", "required": true },
+        { "name": "new_requirements", "description": "Additional requirements.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose how to adapt the code to {{new_requirements}} with minimal disruption. Show extension points and risks."}},
+        {"role": "user", "content": {"type": "text", "text": "Extend:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.errors.anticipate",
+      "description": "Anticipate failure modes and how to prevent them.",
+      "arguments": [
+        { "name": "code", "description": "Code to analyze.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "List potential failure modes, edge cases, and environmental risks. Provide mitigations, circuit breakers, and validation strategies."}},
+        {"role": "user", "content": {"type": "text", "text": "Assess risk:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.performance.complexity",
+      "description": "Explain time/space complexity and scalability.",
+      "arguments": [
+        { "name": "code", "description": "Algorithm or function.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Analyze asymptotic complexity and constants, note scaling behavior, and suggest improvements."}},
+        {"role": "user", "content": {"type": "text", "text": "Complexity:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.testing.strategy",
+      "description": "Explain what and how to test for given code.",
+      "arguments": [
+        { "name": "code", "description": "Subject under test.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "List critical behaviors, edge cases, and integration points to test. Provide example test cases and fixtures."}},
+        {"role": "user", "content": {"type": "text", "text": "Testing guidance:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "learning.documentation.generate",
+      "description": "Generate usage docs and examples for code.",
+      "arguments": [
+        { "name": "code", "description": "Code to document.", "required": true },
+        { "name": "audience", "description": "Target audience.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Create concise documentation, API reference, and usage examples for {{audience}}. Include caveats and limits."}},
+        {"role": "user", "content": {"type": "text", "text": "Docs for:\n{{code}}"}}
+      ]
+    }
+  ]
+}
+
+

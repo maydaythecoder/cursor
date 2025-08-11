@@ -1,0 +1,177 @@
+{
+  "version": "1.0",
+  "collection": "code_generation",
+  "prompts": [
+    {
+      "name": "code_generation.basic",
+      "description": "Generate code for a specific functionality with production-ready quality (readability, error handling, docs).",
+      "arguments": [
+        { "name": "functionality", "description": "What the code should do.", "required": true },
+        { "name": "language", "description": "Programming language and key framework(s).", "required": true },
+        { "name": "inputs", "description": "Input types, ranges, and validation rules.", "required": false },
+        { "name": "outputs", "description": "Expected outputs and their formats.", "required": false },
+        { "name": "requirements", "description": "Non-functional needs: error handling, docs, performance, portability.", "required": false },
+        { "name": "style", "description": "Style/convention preferences (e.g., PEP8, ESLint rules).", "required": false },
+        { "name": "tests", "description": "Testing expectations (unit/integration, edge cases).", "required": false },
+        { "name": "security", "description": "Security constraints: data sensitivity, threat model, compliance.", "required": false },
+        { "name": "performance", "description": "Latency/throughput/memory targets and big-O constraints.", "required": false },
+        { "name": "observability", "description": "Logging/metrics/tracing requirements.", "required": false },
+        { "name": "dependencies", "description": "Allowed libraries and versions.", "required": false },
+        { "name": "output_format", "description": "Preferred output: 'code', 'code_and_tests', 'module_with_readme'.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "You are a senior {{language}} developer. Write highly readable, maintainable code for: {{functionality}}.\n- Include robust error handling and clear docstrings.\n- Favor explicit naming and early returns.\n- Annotate security-critical parts with 'SECURITY:' and safety checks with 'SAFETY:'.\n- Respect inputs/outputs if provided.\n- Only use dependencies in {{dependencies}} if specified.\n- If {{performance}} is given, meet those constraints and explain tradeoffs briefly in comments.\n- Add observability per {{observability}} if provided.\n- If {{tests}} is set, include tests with edge cases.\n- Follow style {{style}} if set."
+          }
+        },
+        {
+          "role": "user",
+          "content": {
+            "type": "text",
+            "text": "Implement {{functionality}} in {{language}}.\nInputs: {{inputs}}\nOutputs: {{outputs}}\nRequirements: {{requirements}}\nSecurity: {{security}}\nPerformance: {{performance}}\nTests: {{tests}}\nObservability: {{observability}}\nOutput format: {{output_format}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "design_pattern.apply",
+      "description": "Implement a design pattern for a specific use case with examples and tradeoffs.",
+      "arguments": [
+        { "name": "pattern", "description": "Pattern name (e.g., Observer, Factory, Strategy).", "required": true },
+        { "name": "use_case", "description": "Concrete use case/domain.", "required": true },
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "alternatives", "description": "Alternative patterns to compare.", "required": false },
+        { "name": "security", "description": "Security considerations for this pattern in the given context.", "required": false },
+        { "name": "tests", "description": "Whether to include unit tests and what to cover.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Implement the {{pattern}} pattern in {{language}} for {{use_case}}. Provide: (1) concise explanation, (2) idiomatic implementation, (3) usage example, (4) pros/cons and tradeoffs, (5) security notes. If {{tests}} is set, include tests."
+          }
+        }
+      ]
+    },
+    {
+      "name": "data_processing.transform",
+      "description": "Parse, validate, transform data between formats with edge-case handling and performance notes.",
+      "arguments": [
+        { "name": "source_format", "description": "Input format and schema.", "required": true },
+        { "name": "target_format", "description": "Output format and schema.", "required": true },
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "validation_rules", "description": "Allow-list validation and constraints.", "required": false },
+        { "name": "error_policy", "description": "How to handle bad records (skip, quarantine, fail-fast).", "required": false },
+        { "name": "performance", "description": "Dataset sizes, throughput goals, memory bounds.", "required": false },
+        { "name": "security", "description": "PII classification, redaction needs, compliance.", "required": false },
+        { "name": "tests", "description": "Test expectations and edge cases.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Build a {{language}} transformer from {{source_format}} to {{target_format}}. Validate using allow-list rules {{validation_rules}}.\n- SECURITY: Redact or avoid logging sensitive fields per {{security}}.\n- Handle errors per {{error_policy}}.\n- Meet {{performance}} if provided.\n- Include tests if {{tests}} is set."
+          }
+        }
+      ]
+    },
+    {
+      "name": "api_integration.client",
+      "description": "Create an API client with auth, retries, circuit breaker, pagination, and rate limiting handling.",
+      "arguments": [
+        { "name": "service_name", "description": "Target API/service name.", "required": true },
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "auth", "description": "Auth scheme (OAuth2, API key, JWT).", "required": true },
+        { "name": "base_url", "description": "Service base URL.", "required": true },
+        { "name": "endpoints", "description": "Endpoints to support and their request/response shapes.", "required": true },
+        { "name": "retries", "description": "Retry/backoff policy (jitter, max attempts).", "required": false },
+        { "name": "circuit_breaker", "description": "Failure thresholds and cooldowns.", "required": false },
+        { "name": "pagination", "description": "Pagination style (cursor, page, token).", "required": false },
+        { "name": "rate_limits", "description": "Rate limit handling strategy.", "required": false },
+        { "name": "timeouts", "description": "Connect/read timeouts.", "required": false },
+        { "name": "tests", "description": "Mocking strategy and integration tests.", "required": false },
+        { "name": "security", "description": "PII handling, header redaction, TLS, error sanitization.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Implement a production-grade {{language}} client for {{service_name}} at {{base_url}} with auth {{auth}}.\n- Implement retries {{retries}}, circuit breaker {{circuit_breaker}}, pagination {{pagination}}, and rate limit handling {{rate_limits}}.\n- SECURITY: Sanitize errors and redact secrets/PII per {{security}}. Enforce TLS 1.3+.\n- Provide examples and tests if {{tests}} set."
+          }
+        }
+      ]
+    },
+    {
+      "name": "configuration.setup",
+      "description": "Initialize application with dependency injection, config validation, feature flags, and secrets handling.",
+      "arguments": [
+        { "name": "language", "description": "Programming language/runtime.", "required": true },
+        { "name": "config_schema", "description": "Configuration keys, types, defaults, and required flags.", "required": true },
+        { "name": "di_framework", "description": "Dependency injection approach/framework.", "required": false },
+        { "name": "feature_flags", "description": "Flags and rollout strategies.", "required": false },
+        { "name": "secrets", "description": "Secrets source (env, vault, KMS) and rotation.", "required": false },
+        { "name": "environments", "description": "Envs to support (dev/stage/prod) with overrides.", "required": false },
+        { "name": "security", "description": "Hardening, least privilege, zero-trust boundaries.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Create {{language}} initialization that: validates {{config_schema}}, wires dependencies via {{di_framework}}, loads secrets {{secrets}}, and enables flags {{feature_flags}} across {{environments}}.\n- SECURITY: Enforce allow-list env vars, avoid logging secrets, and document trust boundaries per {{security}}."
+          }
+        }
+      ]
+    },
+    {
+      "name": "testing.generate",
+      "description": "Generate tests covering edge cases, error conditions, and typical flows with fixtures and mocks.",
+      "arguments": [
+        { "name": "language", "description": "Programming language/test framework.", "required": true },
+        { "name": "subject", "description": "Function/class/module to test (signature/behavior).", "required": true },
+        { "name": "edge_cases", "description": "Edge cases and boundaries to cover.", "required": false },
+        { "name": "fixtures", "description": "Test data fixtures/factories required.", "required": false },
+        { "name": "mocks", "description": "Dependencies to mock/stub and expectations.", "required": false },
+        { "name": "performance", "description": "Benchmarks or performance budgets.", "required": false },
+        { "name": "coverage", "description": "Coverage targets and critical paths.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "Write {{language}} tests for {{subject}} with clear Arrange-Act-Assert, covering {{edge_cases}} and failure modes. Include fixtures {{fixtures}}, mocks {{mocks}}, and optional benchmarks per {{performance}}. Aim for coverage {{coverage}}."
+          }
+        }
+      ]
+    },
+    {
+      "name": "utilities.build",
+      "description": "Create reusable utility functions (data manipulation, logging/monitoring, caching) with docs and examples.",
+      "arguments": [
+        { "name": "language", "description": "Programming language.", "required": true },
+        { "name": "category", "description": "Utility category: helpers | data | logging | caching.", "required": true },
+        { "name": "requirements", "description": "Non-functional requirements and constraints.", "required": false },
+        { "name": "security", "description": "Logging redaction, context-aware encoding, sandboxing.", "required": false },
+        { "name": "examples", "description": "Usage examples to include.", "required": false }
+      ],
+      "messages": [
+        {
+          "role": "system",
+          "content": {
+            "type": "text",
+            "text": "In {{language}}, implement {{category}} utilities with clear APIs, docstrings, and examples {{examples}}.\n- SECURITY: For logging, redact secrets/PII; for caching, avoid poisoning and document TTL/eviction.\n- Meet requirements: {{requirements}}."
+          }
+        }
+      ]
+    }
+  ]
+}
+
+

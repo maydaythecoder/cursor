@@ -1,0 +1,93 @@
+{
+  "version": "1.0",
+  "collection": "debugging",
+  "prompts": [
+    {
+      "name": "debug.error.analysis",
+      "description": "Analyze an error message/stack and identify likely root causes and fixes.",
+      "arguments": [
+        { "name": "error", "description": "Error text/stack trace.", "required": true },
+        { "name": "context", "description": "What changed, environment, inputs.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Summarize the failure, enumerate likely causes ordered by probability, propose minimal-repro steps, and provide fix steps. Context: {{context}}. SECURITY: avoid leaking secrets from logs/trace."}},
+        {"role": "user", "content": {"type": "text", "text": "Error:\n{{error}}"}}
+      ]
+    },
+    {
+      "name": "debug.performance.bottlenecks",
+      "description": "Identify performance bottlenecks and concrete optimization actions.",
+      "arguments": [
+        { "name": "code", "description": "Code or hot path description.", "required": true },
+        { "name": "workload", "description": "Inputs, data sizes, environment.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose profiling plan and list bottlenecks with impact estimates. Recommend algorithmic, memory, and I/O optimizations. Workload: {{workload}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Investigate performance:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "debug.logic.mismatch",
+      "description": "Trace logic when expected vs actual behavior diverges.",
+      "arguments": [
+        { "name": "code", "description": "Relevant function or module.", "required": true },
+        { "name": "expected", "description": "Expected behavior.", "required": true },
+        { "name": "actual", "description": "Observed behavior.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Walk through control flow, identify incorrect assumptions, and propose targeted fixes. Include unit test cases to lock behavior."}},
+        {"role": "user", "content": {"type": "text", "text": "Code:\n{{code}}\nExpected: {{expected}}\nActual: {{actual}}"}}
+      ]
+    },
+    {
+      "name": "debug.integration.api",
+      "description": "Debug failing API calls including request/response, retries, and auth.",
+      "arguments": [
+        { "name": "request", "description": "Request details (method, URL, headers, body).", "required": true },
+        { "name": "response", "description": "Response details (status, headers, body).", "required": false },
+        { "name": "logs", "description": "Client/server logs (sanitized).", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Check auth, DNS/TLS, request schema, content-type, and idempotency. Advise on retries, backoff, circuit breaker, and pagination issues. SECURITY: redact tokens/PII."}},
+        {"role": "user", "content": {"type": "text", "text": "API debugging:\nRequest:\n{{request}}\nResponse:\n{{response}}\nLogs:\n{{logs}}"}}
+      ]
+    },
+    {
+      "name": "debug.state.concurrency",
+      "description": "Investigate concurrency, race conditions, and inconsistent state.",
+      "arguments": [
+        { "name": "code", "description": "Concurrent code/critical section.", "required": true },
+        { "name": "symptoms", "description": "Observed anomalies.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Identify shared mutable state, missing synchronization, and ordering issues. Propose locking, immutability, or message passing. Suggest deterministic tests."}},
+        {"role": "user", "content": {"type": "text", "text": "Concurrency issue:\n{{code}}\nSymptoms: {{symptoms}}"}}
+      ]
+    },
+    {
+      "name": "debug.env.config",
+      "description": "Diagnose environment/config drift and dependency issues.",
+      "arguments": [
+        { "name": "difference", "description": "Works in A not B; list of diffs.", "required": true },
+        { "name": "dependencies", "description": "Key dependency versions.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Systematically compare configuration, env vars, feature flags, and secrets. Propose reproducible env and lockfiles; suggest minimum diagnostic commands. Diffs: {{difference}}; Deps: {{dependencies}}."}}
+      ]
+    },
+    {
+      "name": "debug.tests.flaky",
+      "description": "Stabilize flaky tests.",
+      "arguments": [
+        { "name": "test_code", "description": "Flaky test(s).", "required": true },
+        { "name": "flakiness_pattern", "description": "When/how it fails.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Detect nondeterminism (time, randomness, I/O ordering, race). Introduce deterministic seeds, fake clocks, isolated fixtures, and retries where appropriate. Pattern: {{flakiness_pattern}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Flaky test:\n{{test_code}}"}}
+      ]
+    }
+  ]
+}
+
+

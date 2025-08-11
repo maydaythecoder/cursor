@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "collection": "optimization",
+  "prompts": [
+    {
+      "name": "opt.algorithm.complexity",
+      "description": "Replace high-complexity algorithms with more efficient approaches.",
+      "arguments": [
+        { "name": "code", "description": "Current implementation.", "required": true },
+        { "name": "goal", "description": "Target complexity/performance.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Identify current complexity, propose an improved algorithm, and provide a migration outline with correctness proof sketch. Goal: {{goal}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Optimize:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.memory.usage",
+      "description": "Reduce memory footprint without altering behavior.",
+      "arguments": [
+        { "name": "code", "description": "Memory-heavy code.", "required": true },
+        { "name": "constraints", "description": "Latency/throughput constraints.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Profile allocations, reduce copies, stream data, and use compact structures. Maintain performance within {{constraints}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Reduce memory:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.database.query",
+      "description": "Optimize database queries and schema for target workloads.",
+      "arguments": [
+        { "name": "query_or_schema", "description": "SQL/NoSQL query or schema.", "required": true },
+        { "name": "workload", "description": "Read/write patterns and scale.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Add appropriate indexes, rewrite queries, and adjust schema to eliminate N+1, reduce scans, and improve selectivity. Workload: {{workload}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Optimize DB:\n{{query_or_schema}}"}}
+      ]
+    },
+    {
+      "name": "opt.io.throughput",
+      "description": "Increase I/O throughput via batching, async, and buffering.",
+      "arguments": [
+        { "name": "code", "description": "I/O-heavy code.", "required": true },
+        { "name": "pattern", "description": "Type of I/O (file, network, IPC).", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Apply batching, pipelining, async APIs, and buffer sizing to maximize throughput for {{pattern}}. Provide benchmarks to validate."}},
+        {"role": "user", "content": {"type": "text", "text": "Improve I/O:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.caching.strategy",
+      "description": "Design an effective caching strategy and avoid stampedes.",
+      "arguments": [
+        { "name": "data", "description": "Data access patterns and consistency needs.", "required": true },
+        { "name": "environment", "description": "Single node vs distributed, CDN.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose cache keys, TTL, invalidation strategy, and stampede protection (e.g., jitter, soft TTL, locks). Environment: {{environment}}."}}
+      ]
+    },
+    {
+      "name": "opt.parallel.processing",
+      "description": "Parallelize computation safely and efficiently.",
+      "arguments": [
+        { "name": "code", "description": "Work to parallelize.", "required": true },
+        { "name": "hardware", "description": "CPU cores, memory, GPU availability.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Partition work, avoid contention, and use appropriate concurrency primitives. Include work-stealing or thread pooling if helpful. Hardware: {{hardware}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Parallelize:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.load_balancing",
+      "description": "Improve request distribution and availability.",
+      "arguments": [
+        { "name": "service", "description": "Service to balance.", "required": true },
+        { "name": "traffic", "description": "Traffic patterns and SLOs.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Recommend algorithms (RR, least-loaded, EWMA), health checks, and zone-aware routing for {{service}} under {{traffic}}."}}
+      ]
+    },
+    {
+      "name": "opt.resource.utilization",
+      "description": "Optimize CPU/memory/disk usage for a component.",
+      "arguments": [
+        { "name": "code", "description": "Component to optimize.", "required": true },
+        { "name": "metrics", "description": "Current utilization metrics.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Reduce hotspots, precompute where useful, and right-size resources. Provide KPIs to track improvements. Metrics: {{metrics}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Optimize resources:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.batch.processing",
+      "description": "Increase throughput for batch/streaming workloads.",
+      "arguments": [
+        { "name": "workload", "description": "Batch or streaming workload details.", "required": true },
+        { "name": "sla", "description": "Latency/throughput SLOs.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Tune batch sizes, concurrency, checkpointing, and backpressure to achieve {{sla}} for {{workload}}."}}
+      ]
+    },
+    {
+      "name": "opt.code.hot_path",
+      "description": "Optimize hot paths by eliminating waste and reducing overhead.",
+      "arguments": [
+        { "name": "code", "description": "Hot path code.", "required": true }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Profile to identify hot frames, hoist invariants, reduce allocations, and avoid unnecessary abstractions while preserving clarity."}},
+        {"role": "user", "content": {"type": "text", "text": "Hot path:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.network.calls",
+      "description": "Optimize network calls for latency and bandwidth.",
+      "arguments": [
+        { "name": "code", "description": "Network call sites.", "required": true },
+        { "name": "pattern", "description": "Call pattern (chatty, bulk, streaming).", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Batch, compress, and pipeline requests; reuse connections; employ HTTP/2/3; and use compact serialization. Pattern: {{pattern}}."}},
+        {"role": "user", "content": {"type": "text", "text": "Network code:\n{{code}}"}}
+      ]
+    },
+    {
+      "name": "opt.monitoring",
+      "description": "Add performance monitoring and actionable alerts.",
+      "arguments": [
+        { "name": "component", "description": "Component to instrument.", "required": true },
+        { "name": "kpis", "description": "Key performance indicators.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Instrument {{component}} with metrics/tracing. Define SLOs and alerts on {{kpis}}. Include dashboards to track improvements."}}
+      ]
+    },
+    {
+      "name": "opt.scalability.sharding",
+      "description": "Design sharding/partitioning for distributed systems.",
+      "arguments": [
+        { "name": "data_model", "description": "Entities and access patterns.", "required": true },
+        { "name": "goals", "description": "Latency, fairness, hot key mitigation, rebalancing.", "required": false }
+      ],
+      "messages": [
+        {"role": "system", "content": {"type": "text", "text": "Propose shard keys and partitioning strategy for {{data_model}}. Discuss rebalancing, resharding, consistency, and failure handling per {{goals}}."}}
+      ]
+    }
+  ]
+}
+
+
