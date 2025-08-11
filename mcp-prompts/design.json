@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "collection": "design",
+  "prompts": [
+    {
+      "name": "design.ui.component",
+      "description": "Design a reusable UI component with styling, states, and accessibility.",
+      "arguments": [
+        { "name": "component", "description": "Component name and purpose.", "required": true },
+        { "name": "states", "description": "Component states (default, hover, active, disabled, loading).", "required": true },
+        { "name": "variants", "description": "Size/color/style variants.", "required": false },
+        { "name": "platform", "description": "Target platform (web, mobile, cross-platform).", "required": true },
+        { "name": "design_system", "description": "Design system tokens (colors, spacing, typography).", "required": false },
+        { "name": "accessibility", "description": "A11y requirements (WCAG level, keyboard navigation, screen readers).", "required": false },
+        { "name": "responsive", "description": "Responsive behavior and breakpoints.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design {{component}} for {{platform}}. Provide: CSS/styling specs with states {{states}}, variants {{variants}}, responsive behavior {{responsive}}, and accessibility implementation {{accessibility}}. Use design tokens from {{design_system}} if provided. Include component API, props, and usage examples." } },
+        { "role": "user", "content": { "type": "text", "text": "Component: {{component}}\nStates: {{states}}\nVariants: {{variants}}\nResponsive: {{responsive}}\nDesign System: {{design_system}}" } }
+      ]
+    },
+    {
+      "name": "design.ui.layout",
+      "description": "Create responsive layout systems with CSS Grid/Flexbox and breakpoints.",
+      "arguments": [
+        { "name": "layout_type", "description": "Layout pattern (grid, sidebar, dashboard, landing).", "required": true },
+        { "name": "breakpoints", "description": "Responsive breakpoints and behavior.", "required": true },
+        { "name": "content_areas", "description": "Main content areas and their relationships.", "required": true },
+        { "name": "constraints", "description": "Browser support, framework constraints.", "required": false },
+        { "name": "performance", "description": "Performance considerations (CLS, LCP targets).", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design {{layout_type}} layout with CSS Grid/Flexbox. Define container queries, breakpoints {{breakpoints}}, content areas {{content_areas}}, and fluid typography. Consider {{performance}} and {{constraints}}. Provide CSS code with fallbacks and progressive enhancement." } }
+      ]
+    },
+    {
+      "name": "design.ui.theme",
+      "description": "Create a design system theme with tokens, dark mode, and customization.",
+      "arguments": [
+        { "name": "brand_colors", "description": "Primary brand colors and palette.", "required": true },
+        { "name": "typography", "description": "Font families, scales, and hierarchy.", "required": true },
+        { "name": "spacing", "description": "Spacing scale and layout tokens.", "required": true },
+        { "name": "dark_mode", "description": "Dark mode requirements and strategy.", "required": false },
+        { "name": "customization", "description": "Theming API and CSS custom properties.", "required": false },
+        { "name": "accessibility", "description": "Color contrast ratios and accessibility requirements.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Create design tokens for colors {{brand_colors}}, typography {{typography}}, spacing {{spacing}}. Include semantic tokens, CSS custom properties, and {{dark_mode}} implementation. Ensure {{accessibility}} compliance and provide {{customization}} API. Generate CSS/SCSS/JS token files." } }
+      ]
+    },
+    {
+      "name": "design.ui.animation",
+      "description": "Design micro-interactions and animations with performance and accessibility.",
+      "arguments": [
+        { "name": "interactions", "description": "Specific interactions to animate (hover, transitions, loading).", "required": true },
+        { "name": "timing", "description": "Animation timing and easing preferences.", "required": false },
+        { "name": "reduced_motion", "description": "Reduced motion accessibility handling.", "required": false },
+        { "name": "performance", "description": "Performance targets and optimization constraints.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design animations for {{interactions}} with CSS transitions/keyframes or JS libraries. Use {{timing}} and respect {{reduced_motion}}. Optimize for {{performance}} with transform/opacity, avoid layout thrashing. Provide fallbacks and progressive enhancement." } }
+      ]
+    },
+    {
+      "name": "design.css.architecture",
+      "description": "Structure CSS architecture with methodology, organization, and scalability.",
+      "arguments": [
+        { "name": "methodology", "description": "CSS methodology (BEM, OOCSS, Atomic, CSS-in-JS).", "required": true },
+        { "name": "project_size", "description": "Project scale (small component, large app, design system).", "required": true },
+        { "name": "team_size", "description": "Team size and collaboration needs.", "required": false },
+        { "name": "build_tools", "description": "Build tools and preprocessor preferences.", "required": false },
+        { "name": "maintenance", "description": "Long-term maintenance and refactoring considerations.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design CSS architecture using {{methodology}} for {{project_size}} project. Structure folders, naming conventions, component organization, and {{build_tools}} integration. Consider {{team_size}} collaboration and {{maintenance}} scalability. Provide style guide and linting rules." } }
+      ]
+    },
+    {
+      "name": "design.ui.forms",
+      "description": "Design accessible, user-friendly forms with validation and error handling.",
+      "arguments": [
+        { "name": "form_type", "description": "Form type (contact, checkout, signup, multi-step).", "required": true },
+        { "name": "fields", "description": "Required form fields and input types.", "required": true },
+        { "name": "validation", "description": "Validation rules and error messaging strategy.", "required": true },
+        { "name": "accessibility", "description": "Form accessibility requirements (ARIA, keyboard nav).", "required": false },
+        { "name": "mobile_ux", "description": "Mobile-specific UX considerations.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design {{form_type}} form with fields {{fields}}. Implement validation {{validation}} with inline/summary errors, progressive enhancement, and {{accessibility}} features. Consider {{mobile_ux}} with appropriate input types and keyboard optimization. Provide HTML/CSS and interaction patterns." } }
+      ]
+    },
+    {
+      "name": "design.ui.iconography",
+      "description": "Create consistent icon system with styling, sizing, and optimization.",
+      "arguments": [
+        { "name": "icon_style", "description": "Icon style (outline, filled, duotone, brand).", "required": true },
+        { "name": "sizes", "description": "Icon sizes and use cases.", "required": true },
+        { "name": "delivery", "description": "Delivery method (SVG sprites, icon fonts, inline SVG).", "required": true },
+        { "name": "accessibility", "description": "Icon accessibility and labeling strategy.", "required": false },
+        { "name": "optimization", "description": "File size and performance optimization needs.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design icon system with {{icon_style}} style, sizes {{sizes}}, and {{delivery}} method. Ensure {{accessibility}} with proper ARIA labels and semantic markup. Optimize for {{optimization}} with SVG compression and efficient loading. Provide CSS utilities and usage guidelines." } }
+      ]
+    },
+    {
+      "name": "design.ui.data_viz",
+      "description": "Design data visualization components with responsive behavior and accessibility.",
+      "arguments": [
+        { "name": "chart_types", "description": "Chart types needed (bar, line, pie, scatter, etc.).", "required": true },
+        { "name": "data_complexity", "description": "Data size and complexity considerations.", "required": true },
+        { "name": "interactivity", "description": "Interactive features (zoom, filter, tooltip).", "required": false },
+        { "name": "accessibility", "description": "Data accessibility (alt text, keyboard nav, screen readers).", "required": false },
+        { "name": "responsive", "description": "Responsive and mobile considerations.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Design {{chart_types}} visualizations for {{data_complexity}} datasets. Implement {{interactivity}} with performance optimization. Ensure {{accessibility}} with data tables, ARIA labels, and keyboard navigation. Handle {{responsive}} behavior with adaptive layouts and simplified mobile views." } }
+      ]
+    },
+    {
+      "name": "design.css.utilities",
+      "description": "Create utility-first CSS framework with consistent spacing and naming.",
+      "arguments": [
+        { "name": "utilities", "description": "Utility categories (spacing, colors, typography, layout).", "required": true },
+        { "name": "scale", "description": "Scale system (linear, modular, custom).", "required": true },
+        { "name": "responsive", "description": "Responsive utility variants and breakpoints.", "required": false },
+        { "name": "customization", "description": "Configuration and customization options.", "required": false },
+        { "name": "bundle_size", "description": "Bundle size optimization and purging strategy.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Create utility classes for {{utilities}} using {{scale}} system. Generate {{responsive}} variants and {{customization}} API. Optimize {{bundle_size}} with purging and conditional compilation. Provide naming conventions, documentation, and migration guides." } }
+      ]
+    },
+    {
+      "name": "design.ui.performance",
+      "description": "Optimize UI performance with CSS, loading strategies, and Core Web Vitals.",
+      "arguments": [
+        { "name": "bottlenecks", "description": "Identified performance bottlenecks.", "required": true },
+        { "name": "targets", "description": "Performance targets (LCP, CLS, FID thresholds).", "required": true },
+        { "name": "assets", "description": "Asset types and sizes (CSS, fonts, images).", "required": false },
+        { "name": "loading", "description": "Loading strategy preferences (critical CSS, lazy loading).", "required": false },
+        { "name": "monitoring", "description": "Performance monitoring and measurement setup.", "required": false }
+      ],
+      "messages": [
+        { "role": "system", "content": { "type": "text", "text": "Optimize {{bottlenecks}} to meet {{targets}}. Implement critical CSS extraction, {{loading}} strategies, and asset optimization for {{assets}}. Set up {{monitoring}} with real user metrics. Provide specific CSS optimizations and rendering performance improvements." } }
+      ]
+    }
+  ]
+}
