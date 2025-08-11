@@ -1,0 +1,50 @@
+DEBUGGING & TROUBLESHOOTING PROMPTS
+===================================
+
+## Error Analysis
+- "Analyze this error message and explain what's causing it: [error message]"
+- "I'm getting [error type]. What are the most common causes and how do I fix them?"
+- "Debug this code that's throwing [specific exception]. Here's the relevant code: [code]"
+- "This function is not returning the expected result. Help me trace through the logic: [code]"
+
+## Performance Issues
+- "This code is running slowly. Identify performance bottlenecks and suggest optimizations: [code]"
+- "Profile this algorithm and suggest improvements for better time complexity: [code]"
+- "My application is using too much memory. Help me identify memory leaks: [code]"
+- "Optimize this database query/data processing logic: [code]"
+
+## Logic Debugging
+- "Walk through this code step by step and explain what each part does: [code]"
+- "I expect [expected behavior] but I'm getting [actual behavior]. What's wrong with this logic: [code]"
+- "This conditional logic isn't working correctly. Help me fix the branching: [code]"
+- "Review this algorithm for edge cases that might cause failures: [code]"
+
+## Code Flow Analysis
+- "Trace the execution path of this code when [specific input/condition]: [code]"
+- "Explain why this code might behave differently in [scenario A] vs [scenario B]: [code]"
+- "Help me understand the control flow and identify where the issue might be: [code]"
+- "Map out the data flow through this function and spot potential issues: [code]"
+
+## Integration Issues
+- "This API call is failing. Help me debug the request/response: [code/logs]"
+- "I'm having trouble with [service/database] integration. Debug this connection: [code]"
+- "These two modules aren't communicating properly. Identify the interface issue: [code]"
+- "Debug this event handling/messaging system that's dropping events: [code]"
+
+## State Management
+- "This variable's state is not what I expect. Help me track state changes: [code]"
+- "Debug this concurrency issue where [specific problem]: [code]"
+- "I have race conditions in this multi-threaded code. Help me identify them: [code]"
+- "This cache/session is behaving inconsistently. Debug the state management: [code]"
+
+## Environment & Configuration
+- "This works in [environment A] but not [environment B]. What could be different?"
+- "Help me debug these configuration issues that are causing [specific problem]"
+- "This code behaves differently between development and production. What should I check?"
+- "Debug these dependency/import issues: [error messages]"
+
+## Testing & Validation
+- "My tests are passing but the code fails in production. What am I missing?"
+- "Help me write better test cases that would have caught this bug: [bug description]"
+- "This test is flaky and sometimes fails. Help me make it more reliable: [test code]"
+- "Debug why my mock/stub isn't working as expected: [test code]"

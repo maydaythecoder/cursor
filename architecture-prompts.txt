@@ -1,0 +1,74 @@
+ARCHITECTURE & SYSTEM DESIGN PROMPTS
+====================================
+
+## System Architecture
+- "Design a scalable architecture for [application type] that handles [specific requirements]"
+- "Create a microservices architecture for [system description] with proper service boundaries"
+- "Design a data architecture that supports [specific use cases] with optimal performance"
+- "Architect a system that handles [volume/scale] with high availability and fault tolerance"
+
+## Design Patterns & Principles
+- "Apply SOLID principles to design a [system component] that [specific functionality]"
+- "Design a plugin architecture that allows [extensibility requirements]"
+- "Create a layered architecture for [application type] with clear separation of concerns"
+- "Design an event-driven architecture for [workflow/process] with proper decoupling"
+
+## API Design
+- "Design a RESTful API for [domain] that follows best practices and conventions"
+- "Create a GraphQL schema for [data model] with efficient query patterns"
+- "Design an API versioning strategy for [evolving system] with backward compatibility"
+- "Architect an API gateway that handles [cross-cutting concerns] for multiple services"
+
+## Data Architecture
+- "Design a database schema for [domain] that supports [query patterns] efficiently"
+- "Create a data pipeline architecture for [data processing workflow]"
+- "Design a caching strategy for [application] that optimizes [performance metrics]"
+- "Architect a data warehouse that supports [analytics requirements]"
+
+## Security Architecture
+- "Design a security architecture for [application] that handles [authentication/authorization]"
+- "Create a secure communication pattern between [components] in [environment]"
+- "Design an audit logging system that tracks [security events] compliantly"
+- "Architect a zero-trust security model for [distributed system]"
+
+## Performance & Scalability
+- "Design a horizontally scalable architecture for [application] handling [load characteristics]"
+- "Create a performance monitoring strategy for [system] that tracks [key metrics]"
+- "Design a load balancing strategy for [service] with [availability requirements]"
+- "Architect an auto-scaling solution for [workload] with cost optimization"
+
+## Integration Patterns
+- "Design integration patterns between [system A] and [system B] for [data exchange]"
+- "Create a message queuing architecture for [asynchronous processing] requirements"
+- "Design a webhook system for [event notifications] with reliable delivery"
+- "Architect an ETL pipeline for [data integration] between [source] and [destination]"
+
+## Deployment & DevOps
+- "Design a CI/CD pipeline for [application] with [deployment requirements]"
+- "Create a container orchestration strategy for [microservices] with [scaling needs]"
+- "Design a blue-green deployment strategy for [zero-downtime] requirements"
+- "Architect a monitoring and observability system for [distributed application]"
+
+## Resilience & Fault Tolerance
+- "Design circuit breaker patterns for [service dependencies] with graceful degradation"
+- "Create a disaster recovery plan for [system] with [RTO/RPO] requirements"
+- "Design retry and backoff strategies for [external service] integrations"
+- "Architect a health check system for [services] with automated failure detection"
+
+## Domain-Driven Design
+- "Design bounded contexts for [business domain] with clear domain boundaries"
+- "Create domain models for [business process] following DDD principles"
+- "Design aggregates for [entity relationships] with proper consistency boundaries"
+- "Architect a CQRS pattern for [read/write] workloads with event sourcing"
+
+## Configuration Management
+- "Design a configuration management system for [multi-environment] deployments"
+- "Create a feature flag architecture for [gradual rollouts] and A/B testing"
+- "Design a secrets management strategy for [sensitive data] across [environments]"
+- "Architect a service discovery mechanism for [dynamic service] registration"
+
+## Testing Architecture
+- "Design a testing strategy for [system type] with [quality requirements]"
+- "Create an end-to-end testing architecture for [user journeys]"
+- "Design a performance testing framework for [load characteristics]"
+- "Architect a chaos engineering approach for [resilience testing]"

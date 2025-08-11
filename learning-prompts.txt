@@ -1,0 +1,74 @@
+LEARNING & UNDERSTANDING PROMPTS
+===============================
+
+## Code Explanation
+- "Explain what this code does in simple terms: [code]"
+- "Break down this algorithm step by step and explain the logic: [code]"
+- "Walk me through how this function works with a specific example: [code]"
+- "Explain the purpose and benefits of this design pattern implementation: [code]"
+
+## Concept Learning
+- "Explain [programming concept] with practical examples and use cases"
+- "What are the key differences between [concept A] and [concept B]?"
+- "Show me different ways to implement [functionality] and their trade-offs"
+- "Explain when and why I should use [design pattern/technique]"
+
+## Code Analysis
+- "What are the inputs, outputs, and side effects of this function: [code]"
+- "Identify all the dependencies and requirements for this code: [code]"
+- "Explain the data structures and algorithms used in this implementation: [code]"
+- "What assumptions does this code make about its inputs or environment: [code]"
+
+## Best Practices Learning
+- "What are the best practices for [specific programming task]?"
+- "Show me examples of good vs bad implementations of [functionality]"
+- "Explain the principles behind writing clean, maintainable code"
+- "What are common pitfalls when implementing [specific feature] and how to avoid them?"
+
+## Architecture Understanding
+- "Explain the overall architecture of this system/module: [code]"
+- "How do these different components interact with each other: [code]"
+- "What are the responsibilities of each layer in this architecture: [code]"
+- "Explain the data flow through this system: [code]"
+
+## Pattern Recognition
+- "What design patterns are being used in this code: [code]"
+- "Identify the architectural patterns in this implementation: [code]"
+- "What coding patterns or idioms are demonstrated here: [code]"
+- "Show me how this code follows or violates common design principles: [code]"
+
+## Comparative Learning
+- "Compare these two implementations and explain their differences: [code A] vs [code B]"
+- "Show me different approaches to solve this same problem: [problem description]"
+- "What are the pros and cons of this implementation vs alternatives: [code]"
+- "Explain when I would choose this approach over other options: [code]"
+
+## Practical Applications
+- "Give me real-world examples of where this code pattern would be useful: [code]"
+- "How would this code need to be modified for [different use case]: [code]"
+- "Show me how to extend this code to handle [additional requirements]: [code]"
+- "What are the scalability considerations for this implementation: [code]"
+
+## Error Understanding
+- "Explain why this code might fail and how to prevent it: [code]"
+- "What could go wrong with this implementation in production: [code]"
+- "Identify potential edge cases that this code doesn't handle: [code]"
+- "Explain the error handling strategy in this code: [code]"
+
+## Performance Learning
+- "Explain the time and space complexity of this algorithm: [code]"
+- "What makes this code efficient/inefficient: [code]"
+- "How does this implementation scale with input size: [code]"
+- "Explain the performance trade-offs in this design: [code]"
+
+## Testing Understanding
+- "Explain what aspects of this code should be tested: [code]"
+- "What would be good test cases for this implementation: [code]"
+- "How would you verify the correctness of this algorithm: [code]"
+- "Explain the testing strategy for this type of functionality: [code]"
+
+## Documentation Learning
+- "Generate comprehensive documentation for this code: [code]"
+- "Explain how to use this function/class with examples: [code]"
+- "What information should be documented for this API: [code]"
+- "Create usage examples for different scenarios: [code]"

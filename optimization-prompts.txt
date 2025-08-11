@@ -1,0 +1,86 @@
+OPTIMIZATION & PERFORMANCE PROMPTS
+===================================
+
+## Algorithm Optimization
+- "Optimize this algorithm to improve time complexity from O(n²) to O(n log n): [code]"
+- "Find a more memory-efficient approach for this algorithm: [code]"
+- "Replace this brute-force solution with an optimized algorithm: [code]"
+- "Optimize this recursive function to avoid stack overflow and improve performance: [code]"
+
+## Data Structure Optimization
+- "Choose the optimal data structure for [specific use case] with [access patterns]"
+- "Replace this inefficient data structure with a better alternative: [code]"
+- "Optimize data storage for [specific operations] like search, insert, delete: [code]"
+- "Design a custom data structure that optimizes [specific performance requirement]: [code]"
+
+## Database Performance
+- "Optimize this database query for better performance: [query]"
+- "Design efficient indexes for [table structure] to support [query patterns]"
+- "Rewrite this N+1 query problem with proper joins or batch loading: [code]"
+- "Optimize database schema for [read/write patterns] and [scale requirements]: [schema]"
+
+## Memory Optimization
+- "Reduce memory usage in this implementation without affecting functionality: [code]"
+- "Optimize object allocation and garbage collection in this code: [code]"
+- "Implement memory pooling for [frequent allocations] in this scenario: [code]"
+- "Find and fix memory leaks in this implementation: [code]"
+
+## I/O Performance
+- "Optimize file operations for better throughput in this code: [code]"
+- "Implement efficient batch processing for [I/O operations]: [code]"
+- "Optimize network calls by reducing round trips: [code]"
+- "Implement asynchronous I/O for better concurrency: [code]"
+
+## Caching Strategies
+- "Implement an efficient caching layer for [data access patterns]: [code]"
+- "Design a cache invalidation strategy for [data consistency requirements]"
+- "Optimize cache hit rates for [specific usage patterns]: [code]"
+- "Implement distributed caching for [scalability requirements]: [code]"
+
+## Parallel Processing
+- "Parallelize this algorithm to utilize multiple CPU cores: [code]"
+- "Optimize this computation for concurrent execution: [code]"
+- "Design a work-stealing algorithm for [task distribution]: [code]"
+- "Implement efficient thread pooling for [workload characteristics]: [code]"
+
+## Load Balancing
+- "Design load balancing strategy for [service] to handle [traffic patterns]"
+- "Optimize request distribution across [server instances] for [performance goals]"
+- "Implement intelligent routing that considers [server capacity/health]: [code]"
+- "Design auto-scaling triggers based on [performance metrics]: [code]"
+
+## Resource Optimization
+- "Optimize resource utilization (CPU, memory, disk) in this implementation: [code]"
+- "Design resource pooling for [expensive operations] like [connections/objects]: [code]"
+- "Implement lazy loading for [resource-intensive operations]: [code]"
+- "Optimize startup time and resource initialization: [code]"
+
+## Batch Processing
+- "Optimize bulk operations for better throughput: [code]"
+- "Design efficient batch processing for [large datasets]: [code]"
+- "Implement streaming processing for [continuous data flow]: [code]"
+- "Optimize batch size and processing intervals for [specific workload]: [code]"
+
+## Code-Level Optimizations
+- "Profile this code and identify performance bottlenecks: [code]"
+- "Optimize hot paths in this frequently called function: [code]"
+- "Reduce computational complexity in this critical section: [code]"
+- "Eliminate unnecessary computations and redundant operations: [code]"
+
+## Network Optimization
+- "Optimize API calls to reduce latency and bandwidth usage: [code]"
+- "Implement connection pooling and keep-alive for [service calls]: [code]"
+- "Design efficient data serialization for [network communication]: [code]"
+- "Optimize request batching for [external service] integration: [code]"
+
+## Performance Monitoring
+- "Implement performance monitoring for [system component] to track [key metrics]"
+- "Design alerting system for performance degradation in [service]: [code]"
+- "Create performance benchmarks for [critical operations]: [code]"
+- "Implement profiling hooks to identify performance issues: [code]"
+
+## Scalability Optimization
+- "Design horizontal scaling strategy for [stateless/stateful] service: [code]"
+- "Optimize data partitioning for [distributed system]: [code]"
+- "Implement efficient sharding strategy for [data distribution]: [code]"
+- "Design auto-scaling based on [performance thresholds]: [code]"

@@ -1,0 +1,44 @@
+CODE GENERATION PROMPTS
+========================
+
+## Basic Code Creation
+- "Write a function that [specific functionality]. Make it clean, readable, and follow best practices."
+- "Create a [data structure/class] that handles [specific use case] with proper error handling."
+- "Implement an algorithm that [solves specific problem] with optimal time complexity."
+- "Build a module that [performs specific task] with a clear API interface."
+
+## Design Pattern Implementation
+- "Implement the [pattern name] design pattern for [specific use case]."
+- "Show me how to use the Observer pattern to [specific scenario]."
+- "Create a Factory pattern implementation for [object creation scenario]."
+- "Implement the Strategy pattern for [algorithm selection scenario]."
+
+## Data Processing
+- "Write code to parse and transform [data type] from [format A] to [format B]."
+- "Create a data validation system for [specific requirements]."
+- "Implement data filtering and sorting logic for [specific criteria]."
+- "Build a data aggregation function that [specific calculation/grouping]."
+
+## API and Integration
+- "Create an API client that handles [specific service] with proper authentication and error handling."
+- "Write code to integrate with [external system] following their API specifications."
+- "Implement request/response handling with retries and circuit breaker pattern."
+- "Build a webhook handler that processes [specific event type]."
+
+## Configuration and Setup
+- "Generate configuration management code for [environment/deployment scenario]."
+- "Create initialization code for [application/service] with proper dependency injection."
+- "Write setup scripts for [development/testing environment]."
+- "Implement feature flags system for [specific toggleable features]."
+
+## Testing Code Generation
+- "Generate unit tests for [function/class] covering edge cases and error conditions."
+- "Create integration tests for [workflow/process] with proper mocking."
+- "Write performance benchmarks for [algorithm/function]."
+- "Generate test data factories for [domain objects]."
+
+## Utility Functions
+- "Write helper functions for [common operations] that are reusable and well-documented."
+- "Create utility methods for [data manipulation/transformation]."
+- "Implement logging and monitoring utilities for [application context]."
+- "Build caching mechanisms for [performance optimization scenario]."

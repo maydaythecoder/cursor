@@ -1,0 +1,62 @@
+CODE REVIEW & REFACTORING PROMPTS
+=================================
+
+## Code Quality Review
+- "Review this code for best practices, readability, and maintainability: [code]"
+- "Identify code smells and suggest improvements for this implementation: [code]"
+- "Check this code for potential security vulnerabilities and suggest fixes: [code]"
+- "Review error handling in this code and suggest improvements: [code]"
+
+## Refactoring Suggestions
+- "This function is too long/complex. Help me break it down into smaller, focused functions: [code]"
+- "Refactor this code to eliminate duplication while maintaining functionality: [code]"
+- "Improve the naming and structure of this code for better readability: [code]"
+- "Extract reusable components/modules from this implementation: [code]"
+
+## Architecture Review
+- "Review the overall structure of this module and suggest architectural improvements: [code]"
+- "Is this the right design pattern for this use case? Suggest alternatives if needed: [code]"
+- "Review the separation of concerns in this code and suggest improvements: [code]"
+- "Evaluate the coupling between these components and suggest ways to reduce it: [code]"
+
+## Performance Review
+- "Review this code for performance issues and suggest optimizations: [code]"
+- "Is this the most efficient algorithm for this problem? Suggest alternatives: [code]"
+- "Review resource usage (memory, CPU, I/O) in this code: [code]"
+- "Identify potential scaling issues in this implementation: [code]"
+
+## Maintainability
+- "Make this code more maintainable and easier to understand: [code]"
+- "Add appropriate comments and documentation to this code: [code]"
+- "Review this code for future extensibility and suggest improvements: [code]"
+- "Ensure this code follows SOLID principles and suggest refactoring if needed: [code]"
+
+## Testing & Validation
+- "Review the testability of this code and suggest improvements: [code]"
+- "What edge cases should I test for this implementation: [code]"
+- "Suggest ways to make this code more testable through dependency injection: [code]"
+- "Review input validation and error scenarios for this code: [code]"
+
+## Style & Conventions
+- "Ensure this code follows consistent coding standards and conventions: [code]"
+- "Review variable/function naming for clarity and consistency: [code]"
+- "Check indentation, spacing, and formatting in this code: [code]"
+- "Suggest improvements to make this code more idiomatic: [code]"
+
+## Documentation Review
+- "Review and improve the documentation/comments in this code: [code]"
+- "Generate appropriate inline documentation for this function/class: [code]"
+- "Create usage examples and API documentation for this module: [code]"
+- "Review this code and suggest what documentation is missing: [code]"
+
+## Modernization
+- "Update this legacy code to use modern language features and patterns: [code]"
+- "Refactor this code to use better data structures or algorithms: [code]"
+- "Migrate this code to use current best practices: [code]"
+- "Replace deprecated methods/libraries with modern alternatives: [code]"
+
+## Code Complexity
+- "Simplify this complex logic while maintaining the same functionality: [code]"
+- "Reduce the cognitive load of this code through better structure: [code]"
+- "Break down this nested logic into more readable components: [code]"
+- "Flatten this deeply nested code structure: [code]"
